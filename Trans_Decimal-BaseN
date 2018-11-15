@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Self {
+	
+	private static Scanner sc;
+	
+	public static void main(String[] args) {
+		sc = new Scanner (System.in);
+		int A;
+		int B;
+		String C = new String("");
+		System.out.println("Ingrese el número decimal que desee transformar.");
+		A = sc.nextInt();
+		System.out.println("Ingrese la base la que desea transformar (De 2 a 16).");
+		B = sc.nextInt();
+		if (B < 2){
+			System.out.println("No existe esa base.");
+		}
+		else{
+			if(B > 16){
+				System.out.println("No se permite esa base.");
+			}
+			else{
+				C = CambioBase(A,B);
+				System.out.println("El número "+A+" en la base "+B+" es: "+C);
+			}
+		}
+	}
+
+	public static String CambioBase(int Decimal, int Base){
+		int Aux;
+		String Cambio = new String("");
+		while(Decimal != 0){
+			Aux = Decimal%Base;
+			switch(Aux){
+			case 10:
+				Cambio = "A"+Cambio;break;
+			case 11:
+				Cambio = "B"+Cambio;break;
+			case 12:
+				Cambio = "C"+Cambio;break;
+			case 13:
+				Cambio = "D"+Cambio;break;
+			case 14:
+				Cambio = "E"+Cambio;break;
+			case 15:
+				Cambio = "F"+Cambio;break;
+			default:
+				Cambio = Aux+Cambio;break;
+			}
+			Decimal /= Base;
+		}
+		return Cambio;
+	}
+	
+}
